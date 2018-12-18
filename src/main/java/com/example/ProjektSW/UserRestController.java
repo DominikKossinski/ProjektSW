@@ -1,5 +1,6 @@
 package com.example.ProjektSW;
 
+import com.example.ProjektSW.Data.User;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -24,7 +25,8 @@ public class UserRestController {
     @RequestMapping("/api/getLoggedUser")
     public String getLoggedUser() {
         List<User> users = getJdbcTemplate().query("SELECT * FROM uzytkownicy where zalogowany = true", (rs, arg1) -> {
-            return  new User(rs.getString("imie"), rs.getString("rfid"), rs.getBoolean("zalogowany"));
+            return new User(rs.getString("imie"), rs.getString("rfid"),
+                    rs.getBoolean("zalogowany"), rs.getString("rola"));
         });
         if(users.size() > 1) {
             getJdbcTemplate().update("update uzytkownicy set zalogowany = false");

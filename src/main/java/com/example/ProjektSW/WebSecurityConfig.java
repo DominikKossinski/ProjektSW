@@ -30,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/home", "/api/login", "/api/getLoggedUser", "/api/logout", "/css/*", "/js/*").permitAll()
                 .antMatchers("/measurements", "/api/getMeasurements").authenticated()
-
+                .antMatchers("/admin", "/api/testAlert", "/api/addUser", "/api/deleteUser").hasRole("ADMIN")
                 .anyRequest().denyAll()
                 .and().formLogin().loginPage("/home").defaultSuccessUrl("/measurements")
                 .usernameParameter("username").passwordParameter("password").permitAll()
@@ -48,12 +48,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public UserDetailsService userDetailsService() {
         JdbcTemplate jdbcTemplate = ProjektSwApplication.getJdbcTemplate();
-        List<com.example.ProjektSW.User> users = jdbcTemplate.query("SELECT * FROM uzytkownicy",
+        List<com.example.ProjektSW.Data.User> users = jdbcTemplate.query("SELECT * FROM uzytkownicy",
                 (rs, arg1) -> {
-                    return new com.example.ProjektSW.User(rs.getString("imie"), rs.getString("rfid"), rs.getBoolean("zalogowany"));
+                    return new com.example.ProjektSW.Data.User(rs.getString("imie"),
+                            rs.getString("rfid"), rs.getBoolean("zalogowany"),
+                            rs.getString("rola"));
                 });
-        for (com.example.ProjektSW.User user : users) {
-            UserDetails userDetails = User.withUsername(user.getName()).password("true").roles("USER").build();
+        for (com.example.ProjektSW.Data.User user : users) {
+            UserDetails userDetails = User.withUsername(user.getName()).password("true").roles(user.getRole()).build();
             ProjektSwApplication.getInMemoryUserDetailsManager().createUser(userDetails);
         }
         return ProjektSwApplication.getInMemoryUserDetailsManager();

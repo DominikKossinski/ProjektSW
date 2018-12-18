@@ -1,5 +1,6 @@
 package com.example.ProjektSW;
 
+import com.example.ProjektSW.Data.Measurement;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
