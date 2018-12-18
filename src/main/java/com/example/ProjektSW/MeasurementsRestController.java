@@ -7,14 +7,21 @@ import org.json.simple.parser.ParseException;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import java.util.List;
 
 import static com.example.ProjektSW.ProjektSwApplication.getJdbcTemplate;
 
+/**
+ * Klasa będąca RestController'em odpowiadająca za żądania dotyczące pomierów.
+ */
 @RestController
 public class MeasurementsRestController {
 
+    /**
+     * Metoda odpowiadająca za pobranie oraz zwrócenie listy wszystkich pomiarów.
+     *
+     * @return jsonArray zawierające wszystkie pomiary.
+     */
     @RequestMapping("/api/getMeasurements")
     public String getExample() {
         List<Measurement> measurements = getJdbcTemplate().query("SELECT * FROM pomiary", (rs, arg1) -> {
