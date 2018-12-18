@@ -24,7 +24,7 @@ public class MeasurementsRestController {
      */
     @RequestMapping("/api/getMeasurements")
     public String getExample() {
-        List<Measurement> measurements = getJdbcTemplate().query("SELECT * FROM pomiary", (rs, arg1) -> {
+        List<Measurement> measurements = getJdbcTemplate().query("SELECT * FROM pomiary order by data", (rs, arg1) -> {
             return new Measurement(rs.getDate("data"), rs.getFloat("temperatura"), rs.getFloat("wilgotność"));
         });
         JSONArray array = new JSONArray();
@@ -34,10 +34,14 @@ public class MeasurementsRestController {
                 array.add((JSONObject) parser.parse(measurement.toJsonString()));
             } catch (ParseException e) {
                 e.printStackTrace();
-                return "ERROR";
+                JSONObject object = new JSONObject();
+                object.put("responseStatus", "error");
+                return object.toJSONString();
             }
         }
-
-        return array.toJSONString();
+        JSONObject object = new JSONObject();
+        object.put("responseStatus", "ok");
+        object.put("measurements", array);
+        return object.toJSONString();
     }
 }
