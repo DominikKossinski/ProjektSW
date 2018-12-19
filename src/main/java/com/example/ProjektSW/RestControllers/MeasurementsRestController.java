@@ -1,4 +1,4 @@
-package com.example.ProjektSW;
+package com.example.ProjektSW.RestControllers;
 
 import com.example.ProjektSW.Data.Measurement;
 import org.json.simple.JSONArray;
