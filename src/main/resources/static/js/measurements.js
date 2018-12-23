@@ -1,6 +1,10 @@
+setTimeout(function () {
+    location.reload();
+}, 30000);
+
 function startCheckingLogin() {
     setTimeout("waitForLogout()", 2000);
-    getMeasurements("measurements-ul");
+    setTimeout(getMeasurements("measurements-ul"), 20000);
 }
 
 function waitForLogout() {
@@ -32,6 +36,8 @@ function logout() {
 function getMeasurements(parentElementId) {
     console.log("Ok");
     var parentElement = document.getElementById(parentElementId);
+    parentElementId.innerHTML = "";
+
     fetch("/api/getMeasurements").then(function (response) {
         return response.json();
     }).then(function (data) {
@@ -45,5 +51,5 @@ function getMeasurements(parentElementId) {
                 parentElement.appendChild(li);
             })
         }
-    })
+    });
 }
