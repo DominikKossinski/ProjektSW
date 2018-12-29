@@ -16,7 +16,7 @@ public class AlarmRestController {
      *
      * @return true - jeśli udało się wywołać alarm, false w przeciwnym wypadku.
      */
-    @GetMapping("/api/trialAlarm")
+    @GetMapping("/api/testAlert")
     public String startTrialAlarm() {
         int rowNum = getJdbcTemplate().update("update flagi set flaga = true where nazwa = 'Próbny Alarm'");
         if (rowNum == 1) {
