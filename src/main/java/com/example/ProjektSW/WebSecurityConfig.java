@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/home", "/api/login", "/api/getLoggedUser", "/api/logout", "/css/*", "/js/*","/img/*").permitAll()
-                .antMatchers("/measurements", "/api/getMeasurements*", "/api/getLastMeasurements").authenticated()
+                .antMatchers("/measurements", "/api/getMeasurements*", "/api/getLastMeasurements", "/api/getDates").authenticated()
                 .antMatchers("/admin", "/api/testAlert", "/api/addUser", "/api/deleteUser", "/api/startTestingCart",
                         "/api/stopTestingCart", "/api/readCart").hasRole("ADMIN")
                 .anyRequest().denyAll()
