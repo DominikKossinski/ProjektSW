@@ -49,6 +49,7 @@ public class UserRestController {
             JSONObject object = new JSONObject();
             object.put("logInStatus", "no user logged");
             return object.toJSONString();
+
         }
     }
 }

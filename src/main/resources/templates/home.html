@@ -4,12 +4,46 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="css/home.css"/>
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+	<script src="js/home.js"></script>
+	
 </head>
 <body onload="startWaiting()">
-hffhfgh
+	
+	<div id="container">
+	
+		<div id="logo">Przyłóż kartę, aby się zalogować</div>
+		
+		<div class="loading">
+		
+			<div class="obj"></div>
+			<div class="obj"></div>
+			<div class="obj"></div>
+			<div class="obj"></div>
+			<div class="obj"></div>
+			<div class="obj"></div>
+			<div class="obj"></div>
+			<div class="obj"></div>	
+			<div class="obj"></div>
+			<div style="clear:both;"></div>
+			
+		</div>
+		<div id="info">
+			<button id="btn" onclick="document.getElementById('popup').style.display='block'"></button>
+			<div id="popup"> 
+				<div id="text">
+					Przykładowy tekst opisujący projekt z Systemów wbudowanych, resztę trzeba będzie dopisać ale teraz sprawdzam jak tekst się zachowa jak będzie dłuższy niż jedna linia
+				</div>
+				<button id="btn_close" onclick="document.getElementById('popup').style.display='none'">
+				</button>	
+				<div style="clear:both;"></div>
+			</div>
+			
+			<div style="clear:both;"></div>
+		</div>
+	</div>
+	
 
-<input type="button" onclick="al()">
 
-<script src="js/home.js"></script>
 </body>
 </html>
