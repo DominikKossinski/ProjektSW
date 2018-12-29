@@ -1,5 +1,6 @@
-package com.example.ProjektSW;
+package com.example.ProjektSW.RestControllers;
 
+import com.example.ProjektSW.Data.Measurement;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -29,12 +30,12 @@ public class MeasurementsRestController {
             @RequestParam(value = "date", defaultValue = "", required = false) String date
     ) {
         if (date.isEmpty()) {
-            List<Measurement> measurements = getJdbcTemplate().query("SELECT * FROM pomiary", (rs, arg1) -> {
+            List<Measurement> measurements = getJdbcTemplate().query("SELECT * FROM pomiary order by data", (rs, arg1) -> {
                 return new Measurement(rs.getDate("data"), rs.getFloat("temperatura"), rs.getFloat("wilgotność"));
             });
             return response(measurements);
         } else {
-            List<Measurement> measurements = getJdbcTemplate().query(" select * from pomiary where DATE(data) = DATE('" + date + "')", (rs, arg1) -> {
+            List<Measurement> measurements = getJdbcTemplate().query(" select * from pomiary where DATE(data) = DATE('" + date + "') order by data", (rs, arg1) -> {
                 return new Measurement(rs.getDate("data"), rs.getFloat("temperatura"), rs.getFloat("wilgotność"));
             });
             return response(measurements);
@@ -49,7 +50,7 @@ public class MeasurementsRestController {
     @RequestMapping("/api/getLastMeasurements")
     public String getLastMeasurements() {
         List<Measurement> measurements = getJdbcTemplate().query(
-                "select * from pomiary where data >= (NOW() - INTERVAL 24 MINUTE);", (rs, arg1) -> {
+                "select * from pomiary where data >= (NOW() - INTERVAL 24 MINUTE) order by data;", (rs, arg1) -> {
                     return new Measurement(rs.getDate("data"), rs.getFloat("temperatura"), rs.getFloat("wilgotność"));
                 });
         return response(measurements);
@@ -64,10 +65,16 @@ public class MeasurementsRestController {
                 array.add((JSONObject) parser.parse(measurement.toJsonString()));
             } catch (ParseException e) {
                 e.printStackTrace();
-                return "ERROR";
+                JSONObject object = new JSONObject();
+                object.put("responseStatus", "error");
+                return object.toJSONString();
             }
         }
-        return array.toJSONString();
+        JSONObject object = new JSONObject();
+        object.put("responseStatus", "ok");
+        object.put("measurements", array);
+        return object.toJSONString();
+
     }
 
 }

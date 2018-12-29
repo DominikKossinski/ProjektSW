@@ -1,4 +1,4 @@
-package com.example.ProjektSW;
+package com.example.ProjektSW.Data;
 
 import java.sql.Date;
 
@@ -36,6 +36,7 @@ public class Measurement {
 
     /**
      * Metoda, która przedstwia obiekt w formacie json.
+     *
      * @return tekst, który może zostać sparsowany do obiektu JSON
      */
     public String toJsonString() {

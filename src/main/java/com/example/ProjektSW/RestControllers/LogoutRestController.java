@@ -1,4 +1,4 @@
-package com.example.ProjektSW;
+package com.example.ProjektSW.RestControllers;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
