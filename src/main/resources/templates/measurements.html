@@ -13,7 +13,7 @@
 
     <div id="temp">
         <button class="btn" onclick="document.getElementById('tempPopup').style.display='block'">
-            Wykresy temperatury
+            Wykres temperatury
         </button>
         <div id="tempPopup">
             <div class="text">
@@ -27,29 +27,16 @@
 
     <div id="wilg">
         <button class="btn" onclick="document.getElementById('wilgPopup').style.display='block'">
-            Wykresy wilgotnosci
+            Wykres wilgotnosci
         </button>
         <div id="wilgPopup">
-            <div class="text"> Examle text wilgotnosc, later will be chart</div>
+            <div class="text"> 
+				<canvas id="myHumCanvas" height="80px"> </canvas>
+			</div>
             <button class="btn_close" onclick="document.getElementById('wilgPopup').style.display='none'">
                 <div style="clear:both;"></div>
             </button>
         </div>
-    </div>
-
-    <div id="gaz">
-        <button class="btn" onclick="document.getElementById('gazPopup').style.display='block'">
-            Wykresy gazów i dymu
-        </button>
-        <div id="gazPopup">
-            <div class="text"> Examle text gazy jakies, later will be chart</div>
-            <button class="btn_close" onclick="document.getElementById('gazPopup').style.display='none'">
-                <div style="clear:both;"></div>
-            </button>
-        </div>
-    </div>
-    <div id="example-div">
-        <h1>Text</h1>
     </div>
 
 </div>
