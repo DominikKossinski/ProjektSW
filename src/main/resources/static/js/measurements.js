@@ -27,3 +27,18 @@ function logout() {
         }
     })
 }
+function start(){
+	draw();
+	waitForLogout();
+}
+
+function draw(){
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+	var X = 0;
+	var Y = 0;
+	var width = 200;
+	var height = 100;
+	ctx.fillStyle = "#2ecc71";
+	ctx.fillRect(X,Y,width,height);
+}
