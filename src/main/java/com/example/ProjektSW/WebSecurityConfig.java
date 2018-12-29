@@ -28,9 +28,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/home", "/api/login", "/api/getLoggedUser", "/api/logout", "/css/*", "/js/*",
-                        "/api/trialAlarm", "/api/startTestingCart", "/api/stopTestingCart", "/api/readCart").permitAll()
-                .antMatchers("/measurements", "/api/getMeasurements").authenticated()
+                .antMatchers("/home", "/api/login", "/api/getLoggedUser", "/api/logout", "/css/*", "/js/*","/img/*").permitAll()
+                .antMatchers("/measurements", "/api/getMeasurements*", "/api/getLastMeasurements").authenticated()
                 .antMatchers("/admin", "/api/testAlert", "/api/addUser", "/api/deleteUser").hasRole("ADMIN")
                 .anyRequest().denyAll()
                 .and().formLogin().loginPage("/home").defaultSuccessUrl("/measurements")

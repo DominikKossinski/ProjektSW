@@ -18,7 +18,6 @@ function waitForLogin() {
                     //TODO wyswietlenie info o zalogowaniu
                     window.location.assign("/measurements");
                 } else {
-                    //TODO  wyswietlenie ladnej informaji o nie zalogowaniu
                     setTimeout("waitForLogin()", 2000);
                 }
             })

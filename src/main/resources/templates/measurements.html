@@ -4,11 +4,53 @@
     <meta charset="UTF-8">
     <title>Measurements</title>
     <link rel="stylesheet" href="css/measurements.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <script src="js/measurements.js"></script>
 
 </head>
-<body onload=startCheckingLogin()>
-<h1>Wyniki</h1>
-<ul id="measurements-ul"></ul>
+<body onload="start()">
+<div id="container">
+
+    <div id="temp">
+        <button class="btn" onclick="document.getElementById('tempPopup').style.display='block'">
+            Wykresy temperatury
+        </button>
+        <div id="tempPopup">
+            <div class="text"> Examle text temperatura, later will be chart</div>
+            <button class="btn_close" onclick="document.getElementById('tempPopup').style.display='none'">
+                <div style="clear:both;"></div>
+            </button>
+        </div>
+    </div>
+
+    <div id="wilg">
+        <button class="btn" onclick="document.getElementById('wilgPopup').style.display='block'">
+            Wykresy wilgotnosci
+        </button>
+        <div id="wilgPopup">
+            <div class="text"> Examle text wilgotnosc, later will be chart</div>
+            <button class="btn_close" onclick="document.getElementById('wilgPopup').style.display='none'">
+                <div style="clear:both;"></div>
+            </button>
+        </div>
+    </div>
+
+    <div id="gaz">
+        <button class="btn" onclick="document.getElementById('gazPopup').style.display='block'">
+            Wykresy gazów i dymu
+        </button>
+        <div id="gazPopup">
+            <div class="text"> Examle text gazy jakies, later will be chart</div>
+            <button class="btn_close" onclick="document.getElementById('gazPopup').style.display='none'">
+                <div style="clear:both;"></div>
+            </button>
+        </div>
+    </div>
+
+</div>
 <script src="js/measurements.js"></script>
 </body>
 </html>
+
+<!-- <canvas id="myCanvas" height="300" width="300"> -->
+
