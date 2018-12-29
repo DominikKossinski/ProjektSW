@@ -9,16 +9,11 @@ body {
 }
 
 #temp{
-	margin-top: 100px;
+	margin-top: 200px;
 	margin-bottom: 20px;
 }
 
 #wilg{
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
-#gaz{
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
@@ -49,17 +44,6 @@ body {
 }
 
 #wilgPopup{
-	display: none;
-	border: 3px solid white;
-	position: relative;
-	color: white;
-	width: 80%;
-	left: 10%;
-	background: none;
-	height: 400px;
-}
-
-#gazPopup{
 	display: none;
 	border: 3px solid white;
 	position: relative;

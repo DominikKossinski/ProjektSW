@@ -16,7 +16,9 @@
 				Wykresy temperatury
 			</button>
 			<div id="tempPopup">
-				<div class = "text"> Examle text temperatura, later will be chart </div>
+				<div class = "text"> 
+					<canvas id="myCanvas" height="300" width="400">
+				</div>
 				<button class="btn_close" onclick="document.getElementById('tempPopup').style.display='none'">
 				<div style="clear:both;"></div>
 			</div>
@@ -29,17 +31,6 @@
 			<div id="wilgPopup">
 				<div class = "text"> Examle text wilgotnosc, later will be chart </div>
 				<button class="btn_close" onclick="document.getElementById('wilgPopup').style.display='none'">
-				<div style="clear:both;"></div>
-			</div>
-		</div>
-		
-		<div id="gaz">
-			<button class="btn" onclick="document.getElementById('gazPopup').style.display='block'">
-				Wykresy gazów i dymu
-			</button>
-			<div id="gazPopup">
-				<div class = "text"> Examle text gazy jakies, later will be chart </div>
-				<button class="btn_close" onclick="document.getElementById('gazPopup').style.display='none'">
 				<div style="clear:both;"></div>
 			</div>
 		</div>

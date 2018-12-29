@@ -33,12 +33,22 @@ function start(){
 }
 
 function draw(){
+	
+	var n = "100,200,300,400,500";
+	var values = n.split(',');
+	
 	var canvas = document.getElementById("myCanvas");
 	var ctx = canvas.getContext("2d");
-	var X = 0;
-	var Y = 0;
-	var width = 200;
-	var height = 100;
+	var X = 50;
+	var width = 40;
+	
+	
 	ctx.fillStyle = "#2ecc71";
-	ctx.fillRect(X,Y,width,height);
+	
+	for(var i = 0; i < values.length; i++){
+		var h = values[i];
+		ctx.fillRect(X,canvas.height - h ,width,h);	
+		X += width + 15;
+		
+	}
 }
