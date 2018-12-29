@@ -10,6 +10,7 @@ public class Measurement {
     /**
      * Pole przechowujące datę pomiaru.
      */
+
     private Date date;
     /**
      * Pole przechowujące zarejestrowaną temperaturę.
