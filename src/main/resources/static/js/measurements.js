@@ -1,3 +1,7 @@
+setTimeout(function () {
+    location.reload();
+}, 30000);
+
 function startCheckingLogin() {
     setTimeout("waitForLogout()", 2000);
 }
@@ -27,28 +31,119 @@ function logout() {
         }
     })
 }
-function start(){
-	draw();
-	waitForLogout();
+
+function start() {
+    
+    setTimeout(waitForLogout(), 2000);
+    getAllMeasurements();
+	getLastMeasurements();
 }
 
-function draw(){
+function draw(measurements) {
 	
-	var n = "100,200,300,400,500";
-	var values = n.split(',');
+    var CHART = document.getElementById("myCanvas");
+	console.log(CHART);
+	var lineChart = new Chart(CHART,{
+		type: 'line',
+		data: {
+			labels: ["A","B","C","D","E","F","G"],
+			datasets: [ 
+				{
+					label: "Temperatura w pomieszczeniu",
+					fill: false,
+					lineTension: 0.1,
+					borderColor: "#00ff55",
+					borderCapStyle: 'butt',
+					borderDash: [],
+					borderDashOffset: 0.0,
+					borderJoinStyle: 'miter',
+					pointBorderColor: "#ffffff",
+					pointBackgroundColor: "fff",
+					pointBorderWidth: 1,
+					pointHoverRadius: 5,
+					pointHoverBackgroundColor: "#3399ff",
+					pointHoverBorderColor: "#000000",
+					pointHoverBorderWidth: 2,
+					pointRadius: 6,
+					pointHitRadius: 10,
+					data: [65, 59, 80, 81, 56, 55, 40],
+				}
+			]
+		},
+        options: {
+            legend: {
+                labels: {
+                    // This more specific font property overrides the global property
+                    fontColor: '#ffffff'
+                }
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        fontColor: "white",
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        fontColor: "white",
+                    }
+                }]
+            }
+        }
+	});
+
 	
-	var canvas = document.getElementById("myCanvas");
-	var ctx = canvas.getContext("2d");
-	var X = 50;
-	var width = 40;
+	x.map(function (measurement) {
+			var h = measurement.temperature;
+	});
 	
-	
-	ctx.fillStyle = "#2ecc71";
-	
-	for(var i = 0; i < values.length; i++){
-		var h = values[i];
-		ctx.fillRect(X,canvas.height - h ,width,h);	
-		X += width + 15;
-		
-	}
+}
+
+
+function getAllMeasurements() {
+
+    var parentElement = document.getElementById("example-div");
+    fetch("/api/getMeasurements").then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        console.log(data);
+        if (data.responseStatus === "ok") {
+            var ul = document.createElement("ul");
+            var measurements = data.measurements;
+            measurements.map(function (measurement) {
+                var li = document.createElement("li");
+                li.innerText = measurement.date + " Temp: " + measurement.temperature + " Hum: " + measurement.humidity;
+                ul.appendChild(li);
+            });
+            parentElement.appendChild(ul);
+            return data.measurements;
+        }
+
+    });
+}
+
+function getMeasuremeantsByDate(date) {
+    fetch("/api/getMeasurements?date=" + date).then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        console.log(data);
+        if (data.responseStatus === "ok") {
+			
+            return data.measurements;
+        }
+
+    });
+}
+
+function getLastMeasurements() {
+    fetch("/api/getLastMeasurements").then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        console.log(data);
+        if (data.responseStatus === "ok") {
+			draw(data.measurements);
+            return data.measurements;
+        }
+
+    });
 }
