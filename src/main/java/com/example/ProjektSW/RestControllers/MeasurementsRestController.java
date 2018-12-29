@@ -70,7 +70,10 @@ public class MeasurementsRestController {
                 return object.toJSONString();
             }
         }
-        return array.toJSONString();
+        JSONObject object = new JSONObject();
+        object.put("responseStatus", "ok");
+        object.put("measurements", array);
+        return object.toJSONString();
 
     }
 

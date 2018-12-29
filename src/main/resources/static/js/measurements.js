@@ -4,7 +4,6 @@ setTimeout(function () {
 
 function startCheckingLogin() {
     setTimeout("waitForLogout()", 2000);
-    setTimeout(getMeasurements("measurements-ul"), 20000);
 }
 
 function waitForLogout() {
@@ -34,8 +33,9 @@ function logout() {
 }
 
 function start() {
-    draw();
-    waitForLogout();
+    //draw();
+    setTimeout(waitForLogout(), 2000);
+    getAllMeasurements();
 }
 
 function draw() {
@@ -50,23 +50,48 @@ function draw() {
 }
 
 
-function getMeasurements(parentElementId) {
-    console.log("Ok");
-    var parentElement = document.getElementById(parentElementId);
-    parentElementId.innerHTML = "";
+function getAllMeasurements() {
 
+    var parentElement = document.getElementById("example-div");
     fetch("/api/getMeasurements").then(function (response) {
         return response.json();
     }).then(function (data) {
         console.log(data);
         if (data.responseStatus === "ok") {
+            var ul = document.createElement("ul");
             var measurements = data.measurements;
             measurements.map(function (measurement) {
-                //TODO dodać jakieś ładniejsze wyświetlanie
                 var li = document.createElement("li");
                 li.innerText = measurement.date + " Temp: " + measurement.temperature + " Hum: " + measurement.humidity;
-                parentElement.appendChild(li);
-            })
+                ul.appendChild(li);
+            });
+            parentElement.appendChild(ul);
+            return data.measurements;
         }
+
+    });
+}
+
+function getMeasuremeantsByDate(date) {
+    fetch("/api/getMeasurements?date=" + date).then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        console.log(data);
+        if (data.responseStatus === "ok") {
+            return data.measurements;
+        }
+
+    });
+}
+
+function getLastMeasurements() {
+    fetch("/api/getLastMeasurements").then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        console.log(data);
+        if (data.responseStatus === "ok") {
+            return data.measurements;
+        }
+
     });
 }
