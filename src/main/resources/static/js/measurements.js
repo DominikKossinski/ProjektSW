@@ -119,11 +119,7 @@ function draw(measurements, bool) {
 
     measurements.map(function (measurement) {
 
-        if(bool){
-            var t = measurement.time.substring(0,5);
-        }else{
-            var t = measurement.time.substring(0,2);
-        }
+        var t = measurement.time.substring(0,5);
         x_temp.push(t);
         x_humi = x_temp;
         temp.push(measurement.temperature);

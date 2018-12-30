@@ -2,10 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Panel</title>
+    <title>Admin Panel</title>    
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+	<link rel="stylesheet" href="css/admin.css">
+
 </head>
 <body onload=startCheckingLoginAdmin()>
-<h1>Admin panel</h1>
+	
+	<div id="container">
+	
+		<button id="alarm" class="btn" onclick="tryAlert();">
+			Wywołaj próbny alarm
+		</button>
+		
+		<div id="new">
+			<button class="btn" onclick="document.getElementById('newUser').style.display='block'">
+				Dodaj nowego użytkownika
+			</button>
+			<div id="newUser">
+				<div class="text">
+					<div id="usrReading">
+						<input type="checkbox" id="readCheckBox" name="" onclick="calc();">
+						<div class="enterText">
+							Sczytywanie numeru karty użytkownika
+						</div>
+						<input type="checkbox" id="adminCheckBox" name="" onclick="calcAdmin();">
+						<div class="enterText">
+							Administrator
+						</div>
+						<div style="clear:both;"></div>
+					</div>
+					
+					<input id="cardID" class="inputText" type="text" name="" placeholder="Numer karty użytkownika">
+					<input id="username" class="inputText" type="text" name="" placeholder="Nazwa użytkownika">
+					<div style="clear:both;"></div>
+			
+					<button class="add">
+						Dodaj użytkownika
+					</button>
+					
+				</div>
+				<button class="btn_close" onclick="document.getElementById('newUser').style.display='none'">
+					<div style="clear:both;"></div>
+				</button>
+			</div>
+		</div>
+		
+		<div id="delete">
+			<button class="btn" onclick="document.getElementById('deleteUsr').style.display='block'">
+				Usuń użytkownika
+			</button>
+			<div id="deleteUsr">
+				<div class="text">
+					<div class="enterText" style="width: 100%; margin-bottom: 30px;">
+							Wpisz nazwę użytkownika do usunięcia
+					</div>
+					<input id="deleteUsername" class="inputText" type="text" name="" placeholder="Nazwa użytkownika">
+					<div style="clear:both"></div>
+					<button class="add" onclick="deleteUsr()">
+						Usuń użytkownika
+					</button>
+				</div>
+				<button class="btn_close" onclick="document.getElementById('deleteUsr').style.display='none'">
+					<div style="clear:both;"></div>
+				</button>
+			</div>
+		</div>
+		
+		
+	</div>
+	
 <script src="js/admin.js"></script>
 </body>
 </html>

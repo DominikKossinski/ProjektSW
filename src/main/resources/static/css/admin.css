@@ -1,0 +1,148 @@
+body {
+	background: url(/img/background.png);
+}
+
+#alarm{
+	margin-top: 150px;
+}
+
+.btn{
+	position: relative;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 50px;
+	color: white;
+	width: 50%;
+	left: 25%;
+	padding: 25px;
+	margin-bottom: 30px;
+	margin-top: 50px;
+	border: 3px solid white;
+	border-radius: 10px;
+	background: none;
+}
+
+.btn_close{
+	float: left;
+	height: 20px;
+	width: 20px;
+	margin-top: 5px;
+	background: url(/img/close.png);
+	background-size: cover;
+	border: none;
+}
+
+.inputText{
+	margin-top: 30px;
+	margin-left: 15px;
+	padding: 10px;
+	height: 60px;
+	width: 50%;
+	border-radius: 10px;
+	box-shadow: inset 0 0 5px rgba(0,0,0,.8);
+	background: #2ecc71;
+	color: #041542;
+	outline: none;
+	border: none;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 40px;
+	
+	
+}
+
+.add{
+	position:relative;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 40px;
+	color: white;
+	padding: 15px;
+	margin-top: 30px;
+	width: 36%;
+	left: 32%;
+	border: 3px solid white;
+	border-radius: 10px;
+	background: none;
+}
+
+#usrReadnig{
+	align-items: center;
+}
+
+.enterText{
+	float: left;
+	margin-left: 20px;
+	margin-top: 10px;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 40px;
+	color: white;
+	margin-right: 30px;
+	
+}
+
+input[type="checkbox"]{
+	position: relative;
+	width: 120px;
+	height: 60px;
+	float: left;
+	-webkit-appearance: none;
+	background: #c6c6c6;
+	outline: none;
+	border-radius: 30px;
+	box-shadow: inset 0 0 5px rgba(0,0,0,.8);
+	transition: .5s;
+	
+}
+
+input:checked[type="checkbox"]{
+	background: #2ecc71;
+}
+
+input[type="checkbox"]:before{
+	content: '';
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	top: 0;
+	left: 0;
+	border-radius: 30px;
+	background: #fff;
+	transform: scale(1.1);
+	box-shadow: 0 2px 5px rgba(0,0,0,.8);
+	transition: .5s;
+}
+
+input:checked[type="checkbox"]:before{
+	left: 60px;
+}
+
+#newUser{
+	display: none;
+	border: 3px solid white;
+	position: relative;
+	padding: 10px;
+	color: white;
+	width: 80%;
+	left: 10%;
+	background: none;
+	height: 440px;
+}
+
+#deleteUsr{
+	
+	display: none;
+	border: 3px solid white;
+	position: relative;
+	padding: 10px;
+	color: white;
+	width: 80%;
+	left: 10%;
+	background: none;
+	height: 350px;
+}
+
+.text{
+	float: left;
+	width: 90%;
+	margin-right: 10px;
+	margin-left: 15px;
+	padding: 20px;
+}
