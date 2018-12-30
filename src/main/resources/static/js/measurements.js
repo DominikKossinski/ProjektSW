@@ -33,13 +33,55 @@ function logout() {
     })
 }
 
-function start() {
+function start(b) {
 
     setTimeout(waitForLogout(), 2000);
-    getLastMeasurements();
+	if(b){
+		getLastMeasurements();
+	}else{
+        var rok = document.getElementById("rok").value;
+        var miesiac = document.getElementById("miesiac").value;
+        var dzien = document.getElementById("dzien").value;
+
+		getMeasuremeantsByDate(rok+"-"+miesiac+"-"+dzien);
+	}
 }
 
-function draw(measurements) {
+function admSelectCheck(nameSelect)
+{
+    console.log(nameSelect);
+    if(nameSelect){
+        admOptionValue = document.getElementById("wybranyDzien").value;
+        if(admOptionValue == nameSelect.value){
+            document.getElementById("wyborDaty").style.display = "block";
+        }
+        else{
+            document.getElementById("wyborDaty").style.display = "none";
+        }
+    }
+    else{
+        document.getElementById("wyborDaty").style.display = "none";
+    }
+}
+
+function reloadAll(){
+	v = document.getElementById("wybranyDzien").value;
+	if(v == document.getElementById("val").value){
+
+        var rok = document.getElementById("rok").value;
+        var miesiac = document.getElementById("miesiac").value;
+        var dzien = document.getElementById("dzien").value;
+
+	    getMeasuremeantsByDate(rok+"-"+miesiac+"-"+dzien);
+	    start(false);
+	}
+	else {
+	    getLastMeasurements();
+	    start(true);
+    }
+}
+
+function draw(measurements, bool) {
 
     var temp = [];
     var humi = [];
@@ -48,9 +90,12 @@ function draw(measurements) {
 
     measurements.map(function (measurement) {
 
-        var d = new Date();
-        d = measurement.date;
-        x_temp.push(measurement.date);
+        if(bool){
+            var t = measurement.time.substring(0,5);
+        }else{
+            var t = measurement.time.substring(0,2);
+        }
+        x_temp.push(t);
         x_humi = x_temp;
         temp.push(measurement.temperature);
         humi.push(measurement.humidity);
@@ -146,7 +191,7 @@ function getMeasuremeantsByDate(date) {
     }).then(function (data) {
         console.log(data);
         if (data.responseStatus === "ok") {
-
+			draw(data.measurements, false);
             return data.measurements;
         }
 
@@ -159,7 +204,7 @@ function getLastMeasurements() {
     }).then(function (data) {
         console.log(data);
         if (data.responseStatus === "ok") {
-            draw(data.measurements);
+            draw(data.measurements, true);
             return data.measurements;
         }
 

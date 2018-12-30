@@ -9,18 +9,37 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 </head>
-<body onload="start()">
+<body onload="start(true)">
 <div id="container">
 
 	<div id="formDiv">
 		<div id="formText">Wybierz rodzaj wykresów</div>
 		<form action="dataType">
-			<select id="data">
+			<select id="val" class="data" style="margin-left: 50px" onchange="admSelectCheck(this);">
 				<option>Wykresy w czasie rzeczywistym</option>
-				<option>Wykresy z wybranego dnia</option>
+				<option id="wybranyDzien">Wykresy z wybranego dnia</option>
 			</select>
 		</form>
-		<button id="reloadBtn">Odśwież!</button>
+		<form action="dataType" id="wyborDaty">
+			<select id="dzien" class="data" style="width: 90px; margin-left: 50px">
+				<option>30</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+			</select>
+			<select id="miesiac" class="data" style="width: 95px">
+				<option>12</option>
+				<option>02</option>
+				<option>03</option>
+				<option>04</option>
+			</select>
+			<select id="rok" class="data" style="width: 95px">
+				<option>2018</option>
+				<option>2019</option>
+			</select>
+			<div style="clear:both;"></div>
+		</form>
+		<button id="reloadBtn" onclick="reloadAll();">Odśwież!</button>
 	</div>
 	
     <div id="temp">
