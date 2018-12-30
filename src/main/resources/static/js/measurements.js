@@ -210,3 +210,8 @@ function getLastMeasurements() {
 
     });
 }
+
+function openAdminPanel() {
+    console.log("Admin");
+    window.location.assign("/admin")
+}

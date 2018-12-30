@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Measurements</title>
@@ -13,6 +13,7 @@
 <div id="container">
 
 	<div id="formDiv">
+		<input onclick="openAdminPanel()" th:if="${isAdmin}" type="button" value="go to admin panel">
 		<div id="formText">Wybierz rodzaj wykresów</div>
 		<form action="dataType">
 			<select id="val" class="data" style="margin-left: 50px" onchange="admSelectCheck(this);">
@@ -69,6 +70,7 @@
             </button>
         </div>
     </div>
+
 
 </div>
 <script src="js/measurements.js"></script>
