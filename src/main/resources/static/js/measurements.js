@@ -53,6 +53,35 @@ function admSelectCheck(nameSelect)
     if(nameSelect){
         admOptionValue = document.getElementById("wybranyDzien").value;
         if(admOptionValue == nameSelect.value){
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; //January is 0!
+            var yyyy = today.getFullYear();
+
+            var select_dzien = document.getElementById("dzien");
+            for (var i = 0; i < select_dzien.length; i++){
+                var option = select_dzien.options[i];
+                if(option.text == dd){
+                    option.selected = 'selected';
+                }
+            }
+
+            var select_miesiac = document.getElementById("miesiac");
+            for (var i = 0; i < select_miesiac.length; i++){
+                var option = select_miesiac.options[i];
+                if(option.text == mm){
+                    option.selected = 'selected';
+                }
+            }
+
+            var select_rok = document.getElementById("rok");
+            for (var i = 0; i < select_rok.length; i++){
+                var option = select_rok.options[i];
+                if(option.text == yyyy){
+                    option.selected = 'selected';
+                }
+            }
+
             document.getElementById("wyborDaty").style.display = "block";
         }
         else{

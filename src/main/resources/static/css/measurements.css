@@ -87,10 +87,27 @@ body {
 	font-family: 'Josefin Sans', sans-serif;
 	font-size: 35px;
 	padding: 30px;
+	float: left;
 }
 
 #formText{
 	margin-bottom: 15px;
+	
+}
+
+#adminBtn{
+	
+	position: absolute;
+	font-family: 'Josefin Sans', sans-serif;
+	display: block;
+	font-size: 40px;
+	color: white;
+	margin-top: 40px;
+	right: 5%;
+	padding: 25px;
+	border: 3px solid white;
+	border-radius: 10px;
+	background: none;
 	
 }
 
@@ -141,6 +158,20 @@ body {
 	border: 2px solid #fff;
 	border-radius: 4px;
 	
+}
+
+#adminPanel{
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 50px;
+	color: white;
+	width: 25%;
+	padding: 25px;
+	margin-bottom: 30px;
+	margin-top: 50px;
+	border: 3px solid white;
+	border-radius: 10px;
+	background: none;
+	float: left;
 }
 
 #reloadBtn{
