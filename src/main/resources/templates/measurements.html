@@ -6,11 +6,23 @@
     <link rel="stylesheet" href="css/measurements.css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
     <script src="js/measurements.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 </head>
 <body onload="start()">
 <div id="container">
 
+	<div id="formDiv">
+		<div id="formText">Wybierz rodzaj wykresów</div>
+		<form action="dataType">
+			<select id="data">
+				<option>Wykresy w czasie rzeczywistym</option>
+				<option>Wykresy z wybranego dnia</option>
+			</select>
+		</form>
+		<button id="reloadBtn">Odśwież!</button>
+	</div>
+	
     <div id="temp">
         <button class="btn" onclick="document.getElementById('tempPopup').style.display='block'">
             Wykres temperatury

@@ -22,6 +22,7 @@ function waitForLogout() {
 function logout() {
     fetch("/api/logout").then(function (response) {
         return response.text();
+
     }).then(function (data) {
         if (data === "true") {
             //TODO info o wylogowaniu

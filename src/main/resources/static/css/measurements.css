@@ -9,16 +9,11 @@ body {
 }
 
 #temp{
-	margin-top: 200px;
+	margin-top: 50px;
 	margin-bottom: 20px;
 }
 
 #wilg{
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
-#gaz{
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
@@ -36,7 +31,7 @@ body {
 	width: 50%;
 	left: 25%;
 	padding: 25px;
-	margin-bottom: 60px;
+	margin-bottom: 30px;
 	margin-top: 50px;
 	border: 3px solid white;
 	border-radius: 10px;
@@ -80,5 +75,56 @@ body {
 	margin-top: 5px;
 	background: url(/img/close.png);
 	background-size: cover;
+	border: none;
+}
+
+#formDiv{
+	align-items: center;
+	color: #2ecc71;
+	width: 400px;
+	margin-left: 30px;
+	margin-top: 10px;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 35px;
+	padding: 30px;
+}
+
+#formText{
+	margin-bottom: 15px;
+	
+}
+
+#data{
+	margin-left: 50px;
+	width: 300px;
+	
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+	-ms-appearance: none;
+	
+	appearance: none;
+	padding: 10px;
+	display: block;
+	background: url(/img/select.png) no-repeat 97% center;
+	background-color: #041542;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 18px;
+	color: #fff;
+	border: 2px solid #fff;
+	border-radius: 4px;
+	
+}
+
+#reloadBtn{
+	margin-left: 50px;
+	margin-top: 20px;
+	width: 300px;
+	padding: 10px;
+	background-color: #2ecc71;
+	color: #041542;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 23px;
+	border-radius: 4px;
 	border: none;
 }
