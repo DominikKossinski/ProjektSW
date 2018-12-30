@@ -1,22 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Measurements</title>
     <link rel="stylesheet" href="css/measurements.css">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
     <script src="js/measurements.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 </head>
-<body onload="start()">
+<body onload="start(true)">
 <div id="container">
 
+	<div id="formDiv">
+		<div id="formText">Wybierz rodzaj wykresów</div>
+		<form action="dataType">
+			<select id="val" class="data" style="margin-left: 50px" onchange="admSelectCheck(this);">
+				<option>Wykresy w czasie rzeczywistym</option>
+				<option id="wybranyDzien">Wykresy z wybranego dnia</option>
+			</select>
+		</form>
+		<form action="dataType" id="wyborDaty">
+			<select id="dzien" class="data" style="width: 90px; margin-left: 50px">
+				<option>1</option><option>2</option><option>3</option>
+				<option>4</option><option>5</option><option>6</option><option>7</option>
+				<option>8</option><option>9</option><option>10</option><option>11</option>
+				<option>12</option><option>13</option><option>14</option><option>15</option>
+				<option>16</option><option>17</option><option>18</option><option>19</option>
+				<option>20</option><option>21</option><option>22</option><option>23</option>
+				<option>24</option><option>25</option><option>26</option><option>27</option>
+				<option>28</option><option>29</option><option>30</option><option>31</option>
+			</select>
+			<select id="miesiac" class="data" style="width: 95px">
+				<option>01</option><option>02</option><option>03</option><option>04</option>
+				<option>05</option><option>06</option><option>07</option><option>08</option>
+				<option>09</option><option>10</option><option>11</option><option>12</option>
+			</select>
+			<select id="rok" class="data" style="width: 95px">
+				<option>2018</option>
+				<option>2019</option>
+			</select>
+			<div style="clear:both;"></div>
+		</form>
+		<button id="reloadBtn" onclick="reloadAll();">Odśwież!</button>
+	</div>
+    <input id="adminBtn" onclick="openAdminPanel()" th:if="${isAdmin}" type="button" value="Panel Administratora"/>
+	<div style="clear:both;"></div>
+	
+	
     <div id="temp">
         <button class="btn" onclick="document.getElementById('tempPopup').style.display='block'">
-            Wykresy temperatury
+            Wykres temperatury
         </button>
         <div id="tempPopup">
-            <div class="text"> Examle text temperatura, later will be chart</div>
+            <div class="text">
+				<canvas id="myCanvas" height="80px"> </canvas>
+			</div>
             <button class="btn_close" onclick="document.getElementById('tempPopup').style.display='none'">
                 <div style="clear:both;"></div>
             </button>
@@ -25,32 +64,23 @@
 
     <div id="wilg">
         <button class="btn" onclick="document.getElementById('wilgPopup').style.display='block'">
-            Wykresy wilgotnosci
+            Wykres wilgotnosci
         </button>
         <div id="wilgPopup">
-            <div class="text"> Examle text wilgotnosc, later will be chart</div>
+            <div class="text"> 
+				<canvas id="myHumCanvas" height="80px"> </canvas>
+			</div>
             <button class="btn_close" onclick="document.getElementById('wilgPopup').style.display='none'">
                 <div style="clear:both;"></div>
             </button>
         </div>
     </div>
 
-    <div id="gaz">
-        <button class="btn" onclick="document.getElementById('gazPopup').style.display='block'">
-            Wykresy gazów i dymu
-        </button>
-        <div id="gazPopup">
-            <div class="text"> Examle text gazy jakies, later will be chart</div>
-            <button class="btn_close" onclick="document.getElementById('gazPopup').style.display='none'">
-                <div style="clear:both;"></div>
-            </button>
-        </div>
-    </div>
 
 </div>
 <script src="js/measurements.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
 </body>
 </html>
 
 <!-- <canvas id="myCanvas" height="300" width="300"> -->
-

@@ -1,7 +1,5 @@
 package com.example.ProjektSW.Data;
 
-import java.sql.Date;
-
 /**
  * Klasa reprezentująca pomiar dokonywany przez platformę.
  */
@@ -10,8 +8,12 @@ public class Measurement {
     /**
      * Pole przechowujące datę pomiaru.
      */
+    private String date;
 
-    private Date date;
+    /**
+     * Pole przechowujące godzinę pomiaru.
+     */
+    private String time;
     /**
      * Pole przechowujące zarejestrowaną temperaturę.
      */
@@ -28,8 +30,9 @@ public class Measurement {
      * @param temperature (float) - zarejestrowana temperatura
      * @param humidity    (float) - zarejestrowana wilgotność
      */
-    public Measurement(Date date, float temperature, float humidity) {
+    public Measurement(String date, String time, float temperature, float humidity) {
         this.date = date;
+        this.time = time;
         this.temperature = temperature;
         this.humidity = humidity;
     }
@@ -40,6 +43,7 @@ public class Measurement {
      * @return tekst, który może zostać sparsowany do obiektu JSON
      */
     public String toJsonString() {
-        return "{ \"date\": \"" + date + "\", \"temperature\":" + temperature + ", \"humidity\":" + humidity + "}";
+        return "{ \"date\": \"" + date + "\", \"time\":\"" + time + "\", \"temperature\":" +
+                temperature + ", \"humidity\":" + humidity + "}";
     }
 }

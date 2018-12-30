@@ -29,3 +29,41 @@ function logout() {
         }
     })
 }
+
+function deleteUsr(){
+	
+	var mystring = document.getElementById('deleteUsername').value; 
+    if(!mystring.match(/\S/)) {
+        alert ('Empty value is not allowed');
+        return false;
+    } else {
+        alert("correct input");
+        return true;
+    }
+}
+
+function tryAlert(){
+	alert ('Wywołano próbny alarm!');
+}
+
+function calc(){
+	
+	if (document.getElementById('readCheckBox').checked) 
+	{
+      console.log('read checked');
+	} else {
+      console.log(' read unchecked');
+	}
+	
+	
+}
+
+function calcAdmin(){
+	
+	if (document.getElementById('adminCheckBox').checked) 
+	{
+      console.log('admin checked');
+	} else {
+      console.log(' admin unchecked');
+	}
+}
