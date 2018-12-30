@@ -31,12 +31,14 @@ public class MeasurementsRestController {
     ) {
         if (date.isEmpty()) {
             List<Measurement> measurements = getJdbcTemplate().query("SELECT * FROM pomiary order by data", (rs, arg1) -> {
-                return new Measurement(rs.getDate("data"), rs.getFloat("temperatura"), rs.getFloat("wilgotność"));
+                String[] dateTime = rs.getString("data").split(" ");
+                return new Measurement(dateTime[0], dateTime[1], rs.getFloat("temperatura"), rs.getFloat("wilgotność"));
             });
             return response(measurements);
         } else {
             List<Measurement> measurements = getJdbcTemplate().query(" select * from pomiary where DATE(data) = DATE('" + date + "') order by data", (rs, arg1) -> {
-                return new Measurement(rs.getDate("data"), rs.getFloat("temperatura"), rs.getFloat("wilgotność"));
+                String[] dateTime = rs.getString("data").split(" ");
+                return new Measurement(dateTime[0], dateTime[1], rs.getFloat("temperatura"), rs.getFloat("wilgotność"));
             });
             return response(measurements);
         }
@@ -51,7 +53,8 @@ public class MeasurementsRestController {
     public String getLastMeasurements() {
         List<Measurement> measurements = getJdbcTemplate().query(
                 "select * from pomiary where data >= (NOW() - INTERVAL 24 MINUTE) order by data;", (rs, arg1) -> {
-                    return new Measurement(rs.getDate("data"), rs.getFloat("temperatura"), rs.getFloat("wilgotność"));
+                    String[] dateTime = rs.getString("data").split(" ");
+                    return new Measurement(dateTime[0], dateTime[1], rs.getFloat("temperatura"), rs.getFloat("wilgotność"));
                 });
         return response(measurements);
     }
