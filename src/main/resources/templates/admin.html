@@ -26,7 +26,7 @@
 						<div class="enterText">
 							Sczytywanie numeru karty użytkownika
 						</div>
-						<input type="checkbox" id="adminCheckBox" name="" onclick="calcAdmin();">
+						<input id="adminCheckBox" name="" type="checkbox">
 						<div class="enterText">
 							Administrator
 						</div>
@@ -36,8 +36,8 @@
 					<input id="cardID" class="inputText" type="text" name="" placeholder="Numer karty użytkownika">
 					<input id="username" class="inputText" type="text" name="" placeholder="Nazwa użytkownika">
 					<div style="clear:both;"></div>
-			
-					<button class="add">
+
+					<button class="add" onclick="addUser()">
 						Dodaj użytkownika
 					</button>
 					
