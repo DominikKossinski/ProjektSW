@@ -33,8 +33,7 @@ function deleteUsr(){
 	
 	var mystring = document.getElementById('deleteUsername').value;
     if (mystring === "") {
-        //TODO język polski :P
-        alert ('Empty value is not allowed');
+        alert ('Podaj nazwę użytkownika do usunięcia!');
     } else {
         var data = JSON.stringify({"name": mystring});
         var http = new XMLHttpRequest();
@@ -47,7 +46,7 @@ function deleteUsr(){
                 var header = http.responseText;
                 if (header === "deleted") {
                     alert("Usunięto użytkownika")
-                    //TODO odaj tu chowanie tego formularza
+                    document.getElementById('deleteUsr').style.display='none';
                 } else if (header === "ERROR") {
                     alert("Error");
                 } else {
@@ -134,7 +133,7 @@ function addUser() {
                     var header = http.responseText;
                     if (header === "added") {
                         alert("Dodano użytkownika")
-                        //TODO odaj tu chowanie tego formularza
+                        document.getElementById('newUser').style.display='none';
                     } else if (header === "ERROR") {
                         alert("Error");
                     } else {
