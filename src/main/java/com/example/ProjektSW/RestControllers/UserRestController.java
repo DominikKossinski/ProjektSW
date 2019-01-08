@@ -91,6 +91,7 @@ public class UserRestController {
             JSONObject user = (JSONObject) parser.parse(userData);
             int rowCount = getJdbcTemplate().update("DELETE FROM uzytkownicy where imie = '" + user.get("name") + "'");
             if (rowCount == 1) {
+                getInMemoryUserDetailsManager().deleteUser((String) user.get("name"));
                 return "deleted";
             } else {
                 return "not exists";
