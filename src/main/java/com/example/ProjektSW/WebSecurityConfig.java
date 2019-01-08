@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/home", "/api/login", "/api/getLoggedUser", "/api/logout", "/css/*", "/js/*","/img/*").permitAll()
                 .antMatchers("/measurements", "/api/getMeasurements*", "/api/getLastMeasurements", "/api/getDates").authenticated()
                 .antMatchers("/admin", "/api/testAlert", "/api/addUser", "/api/deleteUser", "/api/startTestingCart",
-                        "/api/stopTestingCart", "/api/readCart").hasRole("ADMIN")
+                        "/api/stopTestingCart", "/api/readCart", "/api/createUser", "/api/deleteUser").hasRole("ADMIN")
                 .anyRequest().denyAll()
                 .and().formLogin().loginPage("/home").defaultSuccessUrl("/measurements")
                 .usernameParameter("username").passwordParameter("password").permitAll()

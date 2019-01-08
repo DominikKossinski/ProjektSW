@@ -21,8 +21,10 @@ public class CardTestRestController {
     public String startTestingCart() {
         int rowNum = getJdbcTemplate().update("update flagi set flaga = true where nazwa = 'Próbna Karta'");
         if (rowNum == 1) {
+            getJdbcTemplate().execute("commit");
             return "true";
         } else {
+            getJdbcTemplate().execute("rollback");
             return "false";
         }
     }
@@ -36,8 +38,10 @@ public class CardTestRestController {
     public String stopTestingCart() {
         int rowNum = getJdbcTemplate().update("update flagi set flaga = false, opis = '' where nazwa = 'Próbna Karta'");
         if (rowNum == 1) {
+            getJdbcTemplate().execute("commit");
             return "true";
         } else {
+            getJdbcTemplate().execute("rollback");
             return "false";
         }
     }

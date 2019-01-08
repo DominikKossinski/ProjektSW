@@ -21,23 +21,25 @@
 			</button>
 			<div id="newUser">
 				<div class="text">
-					<div id="usrReading">
-						<input type="checkbox" id="readCheckBox" name="" onclick="calc();">
-						<div class="enterText">
-							Sczytywanie numeru karty użytkownika
-						</div>
-						<input type="checkbox" id="adminCheckBox" name="" onclick="calcAdmin();">
-						<div class="enterText">
-							Administrator
-						</div>
-						<div style="clear:both;"></div>
-					</div>
-					
 					<input id="cardID" class="inputText" type="text" name="" placeholder="Numer karty użytkownika">
 					<input id="username" class="inputText" type="text" name="" placeholder="Nazwa użytkownika">
 					<div style="clear:both;"></div>
-			
-					<button class="add">
+					<div id="usrReading">
+						<input type="checkbox" id="readCheckBox" name="" onclick="calc();" style="margin-top: 20px;">
+						<div class="enterText">
+							Sczytywanie numeru karty użytkownika
+						</div>
+						<div style="clear:both;"></div>
+						<input id="adminCheckBox" name="" type="checkbox" style="margin-top: 20px;">
+						<div class="enterText">
+							Administrator
+						</div>
+						<div style="clear: both;"></div>
+					</div>
+					
+					
+
+					<button class="add" onclick="addUser()">
 						Dodaj użytkownika
 					</button>
 					

@@ -25,7 +25,6 @@ function logout() {
 
     }).then(function (data) {
         if (data === "true") {
-            //TODO info o wylogowaniu
             window.location.assign("/home");
         } else {
             setTimeout("waitForLogout()", 2000);
